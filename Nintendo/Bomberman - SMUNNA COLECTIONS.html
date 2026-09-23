@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>CARREGANDO...</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="player-page">
+  <div class="player-bar">
+    <button class="player-btn" id="reloadGame">↻ <span>ATUALIZAR</span></button>
+    <div class="player-title">
+      <strong id="playerGameName">CARREGANDO...</strong>
+      <small id="playerConsole"></small>
+    </div>
+    <button class="player-btn close" id="closeGame">✕ <span>FECHAR</span></button>
+  </div>
+
+  <main class="player">
+    <div class="player-loading" id="playerLoading">
+      <div class="loader"></div>
+      <strong>CARREGANDO JOGO</strong>
+      <small>Aguarde...</small>
+    </div>
+    <iframe
+      id="gameFrame"
+      title="RetroBox Game Player"
+      allow="fullscreen; autoplay; gamepad; encrypted-media"
+      allowfullscreen
+      referrerpolicy="no-referrer">
+    </iframe>
+  </main>
+
+  <script>window.RETROBOX_GAME_ID='bomberman';</script>
+  <script src="../js/games.js"></script>
+  <script src="../js/game-player.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <title>Jogos — SMUNNA COLECTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <a class="brand" href="index.html"><span>RETRO</span>BOX <small>V2.1</small></a>
+    <a class="top-emulators" href="emuladores.html">🎮 EMULADORES</a>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">SMUNNA COLECTIONS</div>
+    <nav>
+      <a href="index.html">🏠 <span>Início</span></a>
+      <a href="emuladores.html">🎮 <span>Emuladores</span></a>
+      <a class="active" href="jogos.html">🕹️ <span>Todos os Jogos</span></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="page-header">
+      <span class="eyebrow">BIBLIOTECA</span>
+      <h1>JOGOS</h1>
+      <p>Pesquise e escolha um jogo para abrir no player.</p>
+
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="🔎 Procurar jogo...">
+        <select id="consoleFilter">
+          <option value="all">Todos os consoles</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="game-grid" id="gamesGrid"></div>
+      <div class="empty" id="emptyState" hidden>Nenhum jogo encontrado.</div>
+    </section>
+  </main>
+
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

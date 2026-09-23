@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <title>Emuladores — SMUNNA COLECTIONS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <a class="brand" href="index.html"><span>RETRO</span>BOX <small>V2.1</small></a>
+    <a class="top-emulators" href="jogos.html">🕹️ JOGOS</a>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">SMUNNA COLECTIONS</div>
+    <nav>
+      <a href="index.html">🏠 <span>Início</span></a>
+      <a class="active" href="emuladores.html">🎮 <span>Emuladores</span></a>
+      <a href="jogos.html">🕹️ <span>Todos os Jogos</span></a>
+      <a href="jogos.html?console=megadrive">🔵 <span>Mega Drive</span></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="page-header">
+      <span class="eyebrow">SMUNNA COLECTIONS</span>
+      <h1>EMULADORES</h1>
+      <p>Escolha uma plataforma para acessar sua biblioteca de jogos.</p>
+    </section>
+
+    <section class="section">
+      <div class="console-grid console-grid-large" id="emulatorGrid"></div>
+    </section>
+  </main>
+
+  <script src="js/games.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Yellow - Local Engine</title>
+    <title>Pokémon Yellow</title>
     <style>
         * {
             margin: 0;
@@ -19,164 +19,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: sans-serif;
-            color: #fff;
         }
 
-        #upload-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            background: #111;
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            text-align: center;
-            z-index: 10;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        .custom-file-upload {
-            background-color: #222;
-            color: #fff;
-            border: 1px solid #555;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .custom-file-upload:hover {
-            background-color: #333;
-            border-color: #888;
-        }
-
-        #emulator-container {
-            position: absolute;
-            top: 0;
-            left: 0;
+        #game {
             width: 100vw;
             height: 100vh;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-        }
-
-        canvas {
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            max-width: 100%;
-            max-height: 100%;
         }
     </style>
 </head>
 <body>
 
-    <div id="upload-container">
-        <h2>Pokémon Yellow</h2>
-        <p style="color: #aaa; font-size: 14px;">Selecione o arquivo <b>pokemon.gbc</b> para iniciar:</p>
-        <label for="rom-input" class="custom-file-upload">
-            Carregar ROM (.gbc)
-        </label>
-        <input type="file" id="rom-input" accept=".gbc,.zip">
-    </div>
+    <div id="game"></div>
 
-    <div id="emulator-container">
-        <canvas id="mainCanvas" width="160" height="144"></canvas>
-    </div>
-
-    <!-- Core do Emulador Game Boy -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/binjgb/0.0.1/binjgb.js"></script>
-
-    <script>
-        const romInput = document.getElementById('rom-input');
-        const uploadContainer = document.getElementById('upload-container');
-        const emulatorContainer = document.getElementById('emulator-container');
-        const canvas = document.getElementById('mainCanvas');
-
-        romInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const romData = new Uint8Array(event.target.result);
-                uploadContainer.style.display = 'none';
-                emulatorContainer.style.display = 'flex';
-                iniciarEmulador(romData);
-            };
-            reader.readAsArrayBuffer(file);
-        });
-
-        function iniciarEmulador(romData) {
-            Binjgb().then(emulator => {
-                const romPtr = emulator._malloc(romData.length);
-                emulator.HEAPU8.set(romData, romPtr);
-                
-                if (!emulator._emulator_init(romPtr, romData.length)) {
-                    alert("Erro ao carregar o arquivo de ROM. Verifique se o arquivo está correto.");
-                    return;
-                }
-
-                function resizeCanvas() {
-                    const aspect = 160 / 144;
-                    let width = window.innerWidth;
-                    let height = window.innerHeight;
-
-                    if (width / height > aspect) {
-                        width = height * aspect;
-                    } else {
-                        height = width / aspect;
-                    }
-
-                    canvas.style.width = `${width}px`;
-                    canvas.style.height = `${height}px`;
-                }
-
-                window.addEventListener('resize', resizeCanvas);
-                resizeCanvas();
-
-                function step() {
-                    emulator._emulator_run_frame();
-                    const frameBufferPtr = emulator._emulator_get_display_buffer();
-                    const frameBuffer = new Uint8Array(emulator.HEAPU8.buffer, frameBufferPtr, 160 * 144 * 4);
-
-                    const ctx = canvas.getContext('2d');
-                    const imgData = ctx.createImageData(160, 144);
-                    imgData.data.set(frameBuffer);
-                    ctx.putImageData(imgData, 0, 0);
-
-                    requestAnimationFrame(step);
-                }
-
-                const keyMap = {
-                    'ArrowLeft': 1,   // Esquerda
-                    'ArrowRight': 2,  // Direita
-                    'ArrowUp': 4,     // Cima
-                    'ArrowDown': 8,   // Baixo
-                    'z': 16,          // Botão A
-                    'x': 32,          // Botão B
-                    'Shift': 64,      // Select
-                    'Enter': 128      // Start
-                };
-
-                window.addEventListener('keydown', e => {
-                    if (keyMap[e.key]) emulator._emulator_set_joypad(keyMap[e.key], true);
-                });
-
-                window.addEventListener('keyup', e => {
-                    if (keyMap[e.key]) emulator._emulator_set_joypad(keyMap[e.key], false);
-                });
-
-                step();
-            });
-        }
+    <script type="text/javascript">
+        EJS_player = '#game';
+        EJS_core = 'gb';
+        EJS_gameName = 'Pokemon Yellow';
+        EJS_color = '#000000';
+        EJS_startOnLoaded = true;
+        
+        // Servidor CDN oficial e estável para os motores WebAssembly
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        
+        // Caminho do ficheiro salvo na raiz do seu repositório GitHub
+        EJS_gameUrl = 'pokemon.gbc';
     </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 </body>
 </html>

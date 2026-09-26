@@ -17,20 +17,55 @@
             background-color: #000000;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-family: sans-serif;
             color: #fff;
         }
 
+        #upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+            z-index: 10;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #333;
+            border-color: #888;
+        }
+
         #emulator-container {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
+            background-color: #000;
         }
 
         canvas {
@@ -38,65 +73,57 @@
             image-rendering: crisp-edges;
             max-width: 100%;
             max-height: 100%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .controls-info {
-            position: absolute;
-            bottom: 10px;
-            font-size: 12px;
-            color: #555;
-            text-align: center;
-            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
+    <div id="upload-container">
+        <h2>Pokémon Yellow</h2>
+        <p style="color: #aaa; font-size: 14px;">Selecione o arquivo <b>pokemon.gbc</b> para iniciar:</p>
+        <label for="rom-input" class="custom-file-upload">
+            Carregar ROM (.gbc)
+        </label>
+        <input type="file" id="rom-input" accept=".gbc,.zip">
+    </div>
+
     <div id="emulator-container">
         <canvas id="mainCanvas" width="160" height="144"></canvas>
     </div>
 
-    <div class="controls-info">
-        Setas: D-Pad | Z: Botão A | X: Botão B | Enter: Start | Shift: Select<br>
-        <i>Pressione F11 no navegador para ecrã inteiro</i>
-    </div>
-
-    <!-- Motores do Emulador Game Boy (Wasm/JS Core) -->
+    <!-- Core do Emulador Game Boy -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/binjgb/0.0.1/binjgb.js"></script>
 
     <script>
+        const romInput = document.getElementById('rom-input');
+        const uploadContainer = document.getElementById('upload-container');
+        const emulatorContainer = document.getElementById('emulator-container');
         const canvas = document.getElementById('mainCanvas');
 
-        // Carrega o ficheiro local 'pokemon.gbc' diretamente do diretório raiz
-        fetch('./pokemon.gbc')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Não foi possível encontrar a ROM 'pokemon.gbc' na mesma pasta.");
-                }
-                return response.arrayBuffer();
-            })
-            .then(buffer => {
-                const romData = new Uint8Array(buffer);
+        romInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const romData = new Uint8Array(event.target.result);
+                uploadContainer.style.display = 'none';
+                emulatorContainer.style.display = 'flex';
                 iniciarEmulador(romData);
-            })
-            .catch(err => {
-                console.error(err);
-                alert("Erro ao carregar o jogo: Certifique-se de que o ficheiro 'pokemon.gbc' está salvo na mesma pasta do 'index.html'.");
-            });
+            };
+            reader.readAsArrayBuffer(file);
+        });
 
         function iniciarEmulador(romData) {
-            // Inicialização do core binjgb
             Binjgb().then(emulator => {
                 const romPtr = emulator._malloc(romData.length);
                 emulator.HEAPU8.set(romData, romPtr);
                 
                 if (!emulator._emulator_init(romPtr, romData.length)) {
-                    alert("Erro ao carregar o arquivo de ROM.");
+                    alert("Erro ao carregar o arquivo de ROM. Verifique se o arquivo está correto.");
                     return;
                 }
 
-                // Ajusta resolução do canvas mantendo proporção de píxel
                 function resizeCanvas() {
                     const aspect = 160 / 144;
                     let width = window.innerWidth;
@@ -115,7 +142,6 @@
                 window.addEventListener('resize', resizeCanvas);
                 resizeCanvas();
 
-                // Loop de execução do jogo
                 function step() {
                     emulator._emulator_run_frame();
                     const frameBufferPtr = emulator._emulator_get_display_buffer();
@@ -129,14 +155,13 @@
                     requestAnimationFrame(step);
                 }
 
-                // Mapeamento de Controles
                 const keyMap = {
                     'ArrowLeft': 1,   // Esquerda
                     'ArrowRight': 2,  // Direita
                     'ArrowUp': 4,     // Cima
                     'ArrowDown': 8,   // Baixo
-                    'z': 16,          // A
-                    'x': 32,          // B
+                    'z': 16,          // Botão A
+                    'x': 32,          // Botão B
                     'Shift': 64,      // Select
                     'Enter': 128      // Start
                 };

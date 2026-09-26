@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Yellow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #game {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game"></div>
+
+    <script type="text/javascript">
+        EJS_player = '#game';
+        EJS_core = 'gb';
+        EJS_gameName = 'Pokemon Yellow';
+        EJS_color = '#000000';
+        EJS_startOnLoaded = true;
+        
+        // Servidor CDN oficial e estável para os motores WebAssembly
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        
+        // Caminho do ficheiro salvo na raiz do seu repositório GitHub
+        EJS_gameUrl = 'pokemonblue.gbc';
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+</body>
+</html>

@@ -204,7 +204,7 @@ const JOGOS = [
   {id:"mortal-kombat",name:"Mortal Kombat",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/mortal-kombat"},
   {id:"fatal-fury-2",name:"Fatal Fury 2",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/fatal-fury-2"},
   {id:"sonic-the-hedgehog",name:"Sonic the Hedgehog",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/sonic-the-hedgehog"},
-  {id:"sonic-the-hedgehog-2",name:"Sonic the Hedgehog 2",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/sonic-the-hedgehog-2"},
+  {id:"sonic-the-hedgehog-2",name:"Sonic the Hedgehog 2",console:"megadrive",url:"https://wandracula.github.io/smunnacolections/Mega%20Drive/Sonic%20the%20Hedgehog%202%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"sonic-the-hedgehog-3",name:"Sonic the Hedgehog 3",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/sonic-the-hedgehog-3"},
   {id:"sonic-and-knuckles",name:"Sonic and Knuckles",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/sonic-and-knuckles"},
   {id:"sonic-3d-blast",name:"Sonic 3D Blast",console:"megadrive",url:"https://emulatorgameszone.com/embed/game/sonic-3d-blast"},

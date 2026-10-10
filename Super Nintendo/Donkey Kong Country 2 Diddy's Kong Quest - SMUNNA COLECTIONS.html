@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#000000">
-  <title>CARREGANDO...</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Nintendo - Fullscreen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #game {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
 </head>
-<body class="player-page">
-  <div class="player-bar">
-    <button class="player-btn" id="reloadGame">↻ <span>ATUALIZAR</span></button>
-    <div class="player-title">
-      <strong id="playerGameName">CARREGANDO...</strong>
-      <small id="playerConsole"></small>
-    </div>
-    <button class="player-btn close" id="closeGame">✕ <span>FECHAR</span></button>
-  </div>
+<body>
 
-  <main class="player">
-    <div class="player-loading" id="playerLoading">
-      <div class="loader"></div>
-      <strong>CARREGANDO JOGO</strong>
-      <small>Aguarde...</small>
-    </div>
-    <iframe
-      id="gameFrame"
-      title="RetroBox Game Player"
-      allow="fullscreen; autoplay; gamepad; encrypted-media"
-      allowfullscreen
-      referrerpolicy="no-referrer">
-    </iframe>
-  </main>
+    <div id="game"></div>
 
-  <script>window.RETROBOX_GAME_ID='donkey-kong-country-2-diddy-s-kong-quest';</script>
-  <script src="../js/games.js"></script>
-  <script src="../js/game-player.js"></script>
+    <script type="text/javascript">
+        EJS_player = '#game';
+        EJS_core = 'snes'; // Core alterado para Super Nintendo
+        EJS_gameName = 'Super Nintendo Game';
+        EJS_color = '#000000';
+        EJS_startOnLoaded = true;
+        
+        // Servidor CDN oficial
+        EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        
+        // Nome exato do arquivo da ROM de SNES que está na raiz do GitHub
+        EJS_gameUrl = 'https://static.romsgames.net/a20261010Ar58A5U0coO/output.bin?mediaId=59432&attach=Donkey%2520Kong%2520Country%25202-Diddys%2520Kong%2520Quest%28U%291.1%255B%21%255D.zip'; 
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 </body>
 </html>

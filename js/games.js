@@ -44,7 +44,7 @@ const JOGOS = [
   {id:"donkey-kong-country-2-diddy-s-kong-quest",name:"Donkey Kong Country 2 Diddy's Kong Quest",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Donkey%20Kong%20Country%202%20Diddy's%20Kong%20Quest%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"donkey-kong-country",name:"Donkey Kong Country",console:"snes",url:"https://emulatorgameszone.com/embed/game/donkey-kong-country"},
   {id:"the-legend-of-zelda-a-link-to-the-past",name:"The Legend Of Zelda A Link To The Past",console:"snes",url:"https://emulatorgameszone.com/embed/game/the-legend-of-zelda-a-link-to-the-past"},
-  {id:"super-bomberman",name:"Super Bomberman",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-bomberman"},
+  {id:"super-bomberman",name:"Super Bomberman",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Nintendo/Super%20Nintendo/Super%20Bomberman%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"super-bomberman-2",name:"Super Bomberman 2",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-bomberman-2"},
   {id:"x-men-mutant-apocalypse",name:"X Men Mutant Apocalypse",console:"snes",url:"https://emulatorgameszone.com/embed/game/x-men-mutant-apocalypse"},
   {id:"top-gear-3000",name:"Top Gear 3000",console:"snes",url:"https://emulatorgameszone.com/embed/game/top-gear-3000"},

@@ -34,7 +34,7 @@ const JOGOS = [
   {id:"castlevania-dracula-x",name:"Castlevania Dracula X",console:"snes",url:"https://emulatorgameszone.com/embed/game/castlevania-dracula-x"},
   {id:"super-mario-kart",name:"Super Mario Kart",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-mario-kart"},
   {id:"super-mario-all-stars",name:"Super Mario All Stars",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-mario-all-stars"},
-  {id:"super-mario-world",name:"Super Mario World",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super Nintendo/Super Nintendo/Super Mario World - SMUNNA COLECTIONS.html"},
+  {id:"super-mario-world",name:"Super Mario World",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Mario%20World%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"mega-man-x",name:"Mega Man X",console:"snes",url:"https://emulatorgameszone.com/embed/game/mega-man-x"},
   {id:"super-street-fighter-ii",name:"Super Street Fighter II",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-street-fighter-ii"},
   {id:"ultimate-mortal-kombat-3",name:"Ultimate Mortal Kombat 3",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Super%20Nintendo/Ultimate%20Mortal%20Kombat%203%20-%20SMUNNA%20COLECTIONS.html"},

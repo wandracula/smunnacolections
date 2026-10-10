@@ -68,7 +68,7 @@ const JOGOS = [
   {id:"adventure-island-ii",name:"Adventure Island II",console:"nes",url:"https://emulatorgameszone.com/embed/game/adventure-island-ii"},
   {id:"adventure-island-i",name:"Adventure Island I",console:"nes",url:"https://emulatorgameszone.com/embed/game/adventure-island-i"},
   {id:"dr-mario",name:"Dr Mario",console:"nes",url:"https://emulatorgameszone.com/embed/game/dr-mario"},
-  {id:"super-mario-bros-3",name:"Super Mario Bros 3",console:"nes",url:"https://emulatorgameszone.com/embed/game/super-mario-bros-3"},
+  {id:"super-mario-bros-3",name:"Super Mario Bros 3",console:"nes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Nintendo/Super%20Mario%20Bros%203%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"super-mario-bros-2",name:"Super Mario Bros 2",console:"nes",url:"https://emulatorgameszone.com/embed/game/super-mario-bros-2"},
   {id:"super-mario-bros",name:"Super Mario Bros",console:"nes",url:"https://emulatorgameszone.com/embed/game/super-mario-bros"},
   {id:"contra",name:"Contra",console:"nes",url:"https://emulatorgameszone.com/embed/game/contra"},

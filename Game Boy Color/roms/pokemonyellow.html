@@ -1,50 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Yellow</title>
+    <title>Super Nintendo - Fullscreen</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background-color: #000; overflow: hidden; position: relative; }
+        #game { width: 100vw; height: 100vh; }
 
-        body, html {
+        /* Estilo para o aviso de toque no telemóvel */
+        #overlay-start {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000;
-            overflow: hidden;
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 9999;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
-        #game {
-            width: 100vw;
-            height: 100vh;
+        #overlay-start h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        #overlay-start p {
+            font-size: 16px;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
 
+    <!-- Ecrã de toque inicial para destravar o motor do telemóvel -->
+    <div id="overlay-start" onclick="iniciarJogo()">
+        <h2>🎮 Tocar para Iniciar o Jogo</h2>
+        <p>Toque em qualquer parte do ecrã para carregar o Super Nintendo</p>
+    </div>
+
     <div id="game"></div>
 
     <script type="text/javascript">
         EJS_player = '#game';
-        EJS_core = 'gb';
-        EJS_gameName = 'Pokemon Yellow';
+        EJS_core = 'snes'; 
+        EJS_gameName = 'Super Nintendo Game';
         EJS_color = '#000000';
         EJS_startOnLoaded = true;
+        EJS_defaultAudio = true;
         
-        // Servidor CDN oficial e estável para os motores WebAssembly
         EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+        EJS_gameUrl = 'roms/pokemonyellow.smc';
         
-        // Caminho do ficheiro salvo na raiz do seu repositório GitHub
-        EJS_gameUrl = 'pokemonyellow.gbc';
+        EJS_scale = '1'; 
+        EJS_autoLoadShader = false;
+        EJS_disableDatabases = true;
+        EJS_threads = false;
     </script>
+    
+    <!-- Script oficial do emulador -->
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+    <script>
+        function iniciarJogo() {
+            const overlay = document.getElementById('overlay-start');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300);
+            }
+            
+            // Simula clique no elemento do jogo para garantir foco total
+            const gameDiv = document.getElementById('game');
+            if (gameDiv) {
+                gameDiv.click();
+            }
+        }
+    </script>
 
 </body>
 </html>

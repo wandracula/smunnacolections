@@ -36,5 +36,25 @@
     </script>
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
+
+  <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const gameDiv = document.getElementById('game');
+                if (gameDiv) {
+                    gameDiv.click();
+                    // Simula um toque na tela para destravar o motor do emulador
+                    const touchEvent = new TouchEvent('touchstart', {
+                        bubbles: true,
+                        cancelable: true,
+                        view: window
+                    });
+                    gameDiv.dispatchEvent(touchEvent);
+                }
+            }, 2000); // Aguarda 2 segundos após carregar e dispara o toque
+        });
+    </script>
+
+    
 </body>
 </html>

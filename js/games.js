@@ -18,7 +18,7 @@ const CONSOLES = {
 const JOGOS = [
   {id:"chrono-trigger",name:"Chrono Trigger",console:"snes",url:"https://emulatorgameszone.com/embed/game/chrono-trigger"},
   {id:"magical-quest-3-starring-mickey-and-donald",name:"Magical Quest 3: Starring Mickey and Donald",console:"snes",url:"https://emulatorgameszone.com/embed/game/magical-quest-3-starring-mickey-and-donald"},
-  {id:"top-gear",name:"Top Gear",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Top%20Gear%20-%20SMUNNA%20COLECTIONS.html"},
+  {id:"top-gear",name:"Top Gear",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Top%20Gear%20-%20SMUNNA%20COLECTIONS.html"},
   {id:"fzero",name:"F Zero",console:"snes",url:"https://wandracula.github.io/smunnacolections/Super%20Nintendo/Super%20Nintendo/Super%20Nintendo/FZero%20-%20SMUNNA%20COLECTIONS.html"
    {id:"super-metroid",name:"Super Metroid",console:"snes",url:"https://emulatorgameszone.com/embed/game/super-metroid"},
   {id:"dragon-ball-z-super-butouden-3",name:"Dragon Ball Z Super Butouden 3",console:"snes",url:"https://emulatorgameszone.com/embed/game/dragon-ball-z-super-butouden-3"},

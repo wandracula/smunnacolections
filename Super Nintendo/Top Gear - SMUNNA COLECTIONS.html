@@ -5,26 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Nintendo - Fullscreen</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #game {
-            width: 100vw;
-            height: 100vh;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { width: 100%; height: 100%; background-color: #000; overflow: hidden; }
+        #game { width: 100vw; height: 100vh; }
     </style>
 </head>
 <body>
@@ -37,14 +20,19 @@
         EJS_gameName = 'Super Nintendo Game';
         EJS_color = '#000000';
         EJS_startOnLoaded = true;
+        EJS_defaultAudio = true; // Inicia o contexto de áudio sem travar
         
         // Servidor CDN oficial
         EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
         
-        // Caminho corrigido com codificação para espaços (%20)
-       EJS_gameUrl = 'snes/topgear.sfc';
+        // Link direto da ROM via jsDelivr CDN
+        EJS_gameUrl = 'snes/topgear.sfc';
         
-       
+        // Otimizações de desempenho para telemóvel
+        EJS_scale = '1'; 
+        EJS_autoLoadShader = false;
+        EJS_disableDatabases = true;
+        EJS_threads = false;
     </script>
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 

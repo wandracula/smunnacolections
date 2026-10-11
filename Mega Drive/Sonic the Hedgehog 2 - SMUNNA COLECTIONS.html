@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Nintendo - Fullscreen</title>
+    <title>Mega Drive - Fullscreen</title>
     <style>
         * {
             margin: 0;
@@ -19,32 +19,97 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         #game {
             width: 100vw;
             height: 100vh;
         }
+
+        /* Estilo para o aviso de toque no telemóvel */
+        #overlay-start {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        #overlay-start h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        #overlay-start p {
+            font-size: 16px;
+            color: #ccc;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Ecrã de toque inicial para destravar o motor no telemóvel -->
+    <div id="overlay-start" onclick="iniciarJogo()">
+        <h2>🎮 Tocar para Iniciar o Jogo</h2>
+        <p>Toque em qualquer parte do ecrã para carregar o Mega Drive</p>
+    </div>
 
     <div id="game"></div>
 
     <script type="text/javascript">
         EJS_player = '#game';
-        EJS_core = 'snes'; // Core alterado para Super Nintendo
-        EJS_gameName = 'Super Nintendo Game';
+        EJS_core = 'segaMD'; // Núcleo oficial do EmulatorJS para Mega Drive
+        EJS_gameName = 'Fatal Fury 2';
         EJS_color = '#000000';
         EJS_startOnLoaded = true;
+        EJS_defaultAudio = true; // Liberta o áudio de imediato
         
-        // Servidor CDN oficial
+        // Servidor CDN oficial e estável
         EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
         
-        // Nome exato do arquivo da ROM de SNES que está na raiz do GitHub
-        EJS_gameUrl = 'https://static.romsgames.net/a20261010PL85xPY75j1/output.bin?mediaId=59049&attach=Sonic%2520The%2520Hedgehog%25202%2520%28World%29%2520%28Rev%2520A%29.zip'; 
+        // Link direto da ROM (pode usar via jsDelivr CDN apontando para o seu repositório ou o caminho da ROM)
+        EJS_gameUrl = 'roms/sonic2.md';
+        
+        // Otimizações de desempenho para telemóvel
+        EJS_scale = '1'; 
+        EJS_autoLoadShader = false;
+        EJS_disableDatabases = true;
+        EJS_threads = false;
     </script>
+    
+    <!-- Script oficial do emulador -->
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+    <script>
+        function iniciarJogo() {
+            const overlay = document.getElementById('overlay-start');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300);
+            }
+            
+            // Simula clique no elemento do jogo para garantir foco total
+            const gameDiv = document.getElementById('game');
+            if (gameDiv) {
+                gameDiv.click();
+            }
+        }
+    </script>
 
 </body>
 </html>
